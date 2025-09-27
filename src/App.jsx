@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <main className='p-10'>
+      <main className='p-10 flex flex-col gap-8'>
         <Status />
         <Dashboard />
       </main>

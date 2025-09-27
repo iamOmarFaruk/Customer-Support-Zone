@@ -121,21 +121,20 @@ const Dashboard = () => {
         {/* Task Status - 30% width */}
         <div className="lg:w-[30%]">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Task Status</h2>
+          
+          {/* Current Task */}
+          <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 mb-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Payment Failed - Card Declined</h3>
+            <button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg">
+              Complete
+            </button>
+          </div>
+
+          {/* Resolved Task */}
           <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-            <div className="mb-6">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-lg font-semibold">Payment Failed - Card Declined</span>
-              </div>
-              <button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg">
-                Complete
-              </button>
-            </div>
-            
-            <div className="border-t pt-4">
-              <h3 className="text-lg font-semibold mb-3">Resolved Task</h3>
-              <div className="text-gray-600">
-                Incorrect Billing Address
-              </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Resolved Task</h3>
+            <div className="bg-purple-100 rounded-lg p-4">
+              <p className="text-gray-800 font-medium">Incorrect Billing Address</p>
             </div>
           </div>
         </div>

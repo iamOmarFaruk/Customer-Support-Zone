@@ -3,7 +3,7 @@ import StatusCard from './StatusCard';
 
 const Status = () => {
   return (
-    <main className="container mx-auto px-4 py-8">
+    <section className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <StatusCard 
           title="In-Progress" 
@@ -16,7 +16,7 @@ const Status = () => {
           bgImage="bg-[url('/resolved-bg.svg')] bg-cover bg-center"
         />
       </div>
-    </main>
+    </section>
   );
 };
 
