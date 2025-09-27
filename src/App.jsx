@@ -18,6 +18,8 @@ function App() {
   const [taskStatusTickets, setTaskStatusTickets] = useState([]);
   // State to store resolved tickets
   const [resolvedTickets, setResolvedTickets] = useState([]);
+  // State for app preloader
+  const [appLoading, setAppLoading] = useState(true);
 
   // Function to fetch tickets from JSON file
   const fetchTickets = async () => {
@@ -27,9 +29,16 @@ function App() {
       const ticketsData = await response.json();
       setTickets(ticketsData);
       setLoading(false);
+      
+      // Add small delay to ensure smooth loading experience
+      setTimeout(() => {
+        setAppLoading(false);
+      }, 500);
+      
     } catch (error) {
       console.log('Error fetching tickets:', error);
       setLoading(false);
+      setAppLoading(false);
     }
   };
 
@@ -90,6 +99,20 @@ function App() {
   useEffect(() => {
     fetchTickets();
   }, []);
+
+  // Show preloader while app is loading
+  if (appLoading) {
+    return (
+      <div className="fixed inset-0 bg-white flex items-center justify-center z-50">
+        <div className="text-center">
+          {/* Loading Circle */}
+          <div className="inline-block w-12 h-12 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mb-4"></div>
+          <h2 className="text-xl font-semibold text-gray-700 mb-2">Loading Customer Support</h2>
+          <p className="text-gray-500">Please wait while we prepare your dashboard...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
