@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <main className='pt-20 p-10 flex flex-col gap-8'>
+      <main className='pt-40 p-10 flex flex-col gap-8'>
         <Status />
         <Dashboard />
       </main>
