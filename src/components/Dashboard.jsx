@@ -101,7 +101,7 @@ const Dashboard = () => {
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Customer Tickets - 70% width */}
         <div className="lg:w-[70%]">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Customer Tickets</h2>
+          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">Customer Tickets</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {tickets.map((ticket) => (
               <DashCard
@@ -120,7 +120,7 @@ const Dashboard = () => {
 
         {/* Task Status - 30% width */}
         <div className="lg:w-[30%]">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Task Status</h2>
+          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">Task Status</h2>
           
           {/* Current Task */}
           <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 mb-6">
