@@ -133,7 +133,7 @@ const Dashboard = () => {
           {/* Resolved Task */}
           <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Resolved Task</h3>
-            <div className="bg-purple-100 rounded-lg p-4">
+            <div className="bg-blue-100 rounded-lg p-4">
               <p className="text-gray-800 font-medium">Incorrect Billing Address</p>
             </div>
           </div>
