@@ -189,6 +189,3 @@ function SupportTicket() {
 - Use arrow functions to pass parameters: `onClick={() => handleClick(id)}`
 - Event object is automatically passed as the first parameter
 
----
-
-*These concepts are implemented in the Customer Support Zone project. Feel free to explore the code!*
