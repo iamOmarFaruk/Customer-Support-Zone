@@ -1,5 +1,7 @@
 
 import { useState, useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar';
 import './App.css';
 import './index.css';
@@ -37,12 +39,27 @@ function App() {
     const isAlreadyInTaskStatus = taskStatusTickets.some(t => t.id === ticket.id);
     
     if (isAlreadyInTaskStatus) {
-      alert('This ticket is already added to Task Status!');
+      toast.warn('This ticket is already added to Task Status!', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
       return;
     }
     
     // Add to task status list
     setTaskStatusTickets([...taskStatusTickets, ticket]);
+    
+    // Show success toast
+    toast.success(`"${ticket.title}" added to Task Status!`, {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+    });
   };
 
   // Function to mark a ticket as completed
@@ -57,6 +74,15 @@ function App() {
       setTaskStatusTickets(taskStatusTickets.filter(ticket => ticket.id !== ticketId));
       // Remove from main tickets list
       setTickets(tickets.filter(ticket => ticket.id !== ticketId));
+      
+      // Show completion toast
+      toast.success(`"${ticketToComplete.title}" completed and moved to Resolved Tasks!`, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
     }
   };
 
@@ -83,6 +109,20 @@ function App() {
         />
       </main>
       <Footer />
+      
+      {/* Toast Container */}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 }
