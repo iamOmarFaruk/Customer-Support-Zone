@@ -2,28 +2,28 @@
 
 ## What is JSX, and why is it used?
 
-JSX mane holo JavaScript XML. Basically, JSX diye amra HTML er moto code likhte pari JavaScript er vitore. React e eta use kori karon eta code ke onek readable aar maintainable kore.
+JSX stands for JavaScript XML. Basically, JSX allows us to write HTML-like code inside JavaScript. We use it in React because it makes our code much more readable and maintainable.
 
 ```jsx
 // JSX example
 const Welcome = () => {
   return (
     <div>
-      <h1>Assalamu Alaikum!</h1>
+      <h1>Hello There!</h1>
       <p>Welcome to our support zone</p>
     </div>
   );
 };
 ```
 
-JSX use korar main benefit holo - amra HTML structure easily imagine korte pari aar JavaScript er power o use korte pari.
+The main benefit of using JSX is that we can easily visualize the HTML structure while also using the power of JavaScript.
 
 ## What is the difference between State and Props?
 
-**State** holo component er nijossho data jeta change hote pare. **Props** holo parent component theke child component e pathano data.
+**State** is the component's own data that can change over time. **Props** are data passed from a parent component to a child component.
 
 ```jsx
-// Props example - parent theke child e data pathano
+// Props example - data passed from parent to child
 function Parent() {
   return <Child name="Omar" age={25} />;
 }
@@ -32,7 +32,7 @@ function Child({ name, age }) {
   return <p>My name is {name}, age {age}</p>;
 }
 
-// State example - component er nijossho changeable data
+// State example - component's own changeable data
 function Counter() {
   const [count, setCount] = useState(0);
   
@@ -47,11 +47,11 @@ function Counter() {
 }
 ```
 
-Mone rakhben - Props read-only (change kora jay na), kintu State change kora jay.
+Remember - Props are read-only (cannot be changed), but State can be changed.
 
 ## What is the useState hook, and how does it work?
 
-useState hook diye amra functional component e state manage kori. Eta duita jinish return kore - current state value aar setter function.
+The useState hook helps us manage state in functional components. It returns two things - the current state value and a setter function.
 
 ```jsx
 import { useState } from 'react';
@@ -72,7 +72,7 @@ function TicketForm() {
       <input 
         value={ticketTitle}
         onChange={(e) => setTicketTitle(e.target.value)}
-        placeholder="Ticket title likhen"
+        placeholder="Enter ticket title"
       />
       <button onClick={handleSubmit}>Submit</button>
       {isSubmitted && <p>Ticket successfully submitted!</p>}
@@ -83,12 +83,12 @@ function TicketForm() {
 
 ## How can you share state between components in React?
 
-State share korar koyekta way ache:
+There are several ways to share state:
 
-**1. Lifting State Up (Parent component e state rakhba):**
+**1. Lifting State Up (Keep state in parent component):**
 
 ```jsx
-// Parent component e shared state
+// Shared state in parent component
 function TicketApp() {
   const [tickets, setTickets] = useState([]);
   
@@ -117,10 +117,10 @@ function TicketList({ tickets }) {
 }
 ```
 
-**2. Context API use kore:**
+**2. Using Context API:**
 
 ```jsx
-// Context create kora
+// Create context
 const TicketContext = createContext();
 
 function App() {
@@ -133,7 +133,7 @@ function App() {
   );
 }
 
-// Jei component e dorkar context use kora
+// Use context in component that needs it
 function Dashboard() {
   const { tickets } = useContext(TicketContext);
   return <div>Total tickets: {tickets.length}</div>;
@@ -142,7 +142,7 @@ function Dashboard() {
 
 ## How is event handling done in React?
 
-React e event handling khubi simple. Event handler function pass kori JSX attribute hisebe.
+Event handling in React is very simple. We pass event handler functions as JSX attributes.
 
 ```jsx
 function SupportTicket() {
@@ -155,7 +155,7 @@ function SupportTicket() {
   };
   
   const handleTicketClick = (event) => {
-    event.preventDefault(); // Default behavior stop kora
+    event.preventDefault(); // Stop default behavior
     alert('Ticket details loading...');
   };
   
@@ -184,11 +184,11 @@ function SupportTicket() {
 }
 ```
 
-**Mone rakhben:**
-- Event handler function pass koren, call koren na `onClick={handleClick}` ✅ not `onClick={handleClick()}` ❌
-- Arrow function use korle parameter pass korte paren: `onClick={() => handleClick(id)}`
-- Event object automatically pass hoy first parameter hisebe
+**Remember:**
+- Pass the event handler function, don't call it: `onClick={handleClick}` ✅ not `onClick={handleClick()}` ❌
+- Use arrow functions to pass parameters: `onClick={() => handleClick(id)}`
+- Event object is automatically passed as the first parameter
 
 ---
 
-*Customer Support Zone project e ei concepts gula implement kora ache. Code explore kore dekhte paren!*
+*These concepts are implemented in the Customer Support Zone project. Feel free to explore the code!*
