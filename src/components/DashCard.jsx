@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DashCard = ({ id, title, description, customer, priority, status, createdAt }) => {
+const DashCard = ({ id, title, description, customer, priority, status, createdAt, onClick }) => {
   // Function to get priority color and text
   const getPriorityStyle = (priority) => {
     switch (priority.toLowerCase()) {
@@ -22,6 +22,8 @@ const DashCard = ({ id, title, description, customer, priority, status, createdA
         return { bg: 'bg-green-100', text: 'text-green-700', dotColor: 'bg-green-500' };
       case 'in-progress':
         return { bg: 'bg-yellow-100', text: 'text-yellow-700', dotColor: 'bg-yellow-500' };
+      case 'completed':
+        return { bg: 'bg-blue-100', text: 'text-blue-700', dotColor: 'bg-blue-500' };
       default:
         return { bg: 'bg-gray-100', text: 'text-gray-700', dotColor: 'bg-gray-500' };
     }
@@ -31,7 +33,10 @@ const DashCard = ({ id, title, description, customer, priority, status, createdA
   const statusStyle = getStatusStyle(status);
 
   return (
-    <div className="bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer">
+    <div 
+      className="bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer"
+      onClick={onClick}
+    >
       <div className="flex justify-between items-start mb-3 md:mb-4">
         <h3 className="text-base md:text-lg font-semibold text-gray-900 leading-tight flex-1 pr-3">{title}</h3>
         <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium ${statusStyle.bg} ${statusStyle.text} whitespace-nowrap`}>
