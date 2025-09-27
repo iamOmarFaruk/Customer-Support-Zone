@@ -10,14 +10,25 @@ const Navbar = () => {
           </div>
           <div className="flex items-center gap-6">
             <ul className="flex gap-6">
-              <li><a href="/home" className="text-gray-600 hover:text-gray-800">Home</a></li>
-              <li><a href="/faq" className="text-gray-600 hover:text-gray-800">FAQ</a></li>
-              <li><a href="/changelog" className="text-gray-600 hover:text-gray-800">Changelog</a></li>
-              <li><a href="/blog" className="text-gray-600 hover:text-gray-800">Blog</a></li>
-              <li><a href="/download" className="text-gray-600 hover:text-gray-800">Download</a></li>
-              <li><a href="/contact" className="text-gray-600 hover:text-gray-800">Contact</a></li>
+              <li><a href="/home" className="text-black hover:text-gray-800">Home</a></li>
+              <li><a href="/faq" className="text-black hover:text-gray-800">FAQ</a></li>
+              <li><a href="/changelog" className="text-black hover:text-gray-800">Changelog</a></li>
+              <li><a href="/blog" className="text-black hover:text-gray-800">Blog</a></li>
+              <li><a href="/download" className="text-black hover:text-gray-800">Download</a></li>
+              <li><a href="/contact" className="text-black hover:text-gray-800">Contact</a></li>
             </ul>
-            <a href="/new-ticket" className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg">+ New Ticket</a>
+            <a 
+              href="/new-ticket" 
+              className="text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity"
+              style={{
+                backgroundImage: "url('/button-bg.svg')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+              }}
+            >
+              + New Ticket
+            </a>
           </div>
         </nav>
       </div>
