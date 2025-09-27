@@ -4,6 +4,7 @@ import './App.css';
 import './index.css';
 import Status from './components/Status';
 import Dashboard from './components/Dashboard';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Status />
         <Dashboard />
       </main>
+      <Footer />
     </>
   );
 }
