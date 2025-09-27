@@ -12,8 +12,8 @@ function App() {
   const [tickets, setTickets] = useState([]);
   // State to show loading message while fetching data
   const [loading, setLoading] = useState(true);
-  // State to track currently selected ticket for task status
-  const [selectedTicket, setSelectedTicket] = useState(null);
+  // State to track list of selected tickets for task status
+  const [taskStatusTickets, setTaskStatusTickets] = useState([]);
   // State to store resolved tickets
   const [resolvedTickets, setResolvedTickets] = useState([]);
 
@@ -33,18 +33,30 @@ function App() {
 
   // Function to select a ticket for task status
   const selectTicket = (ticket) => {
-    setSelectedTicket(ticket);
+    // Check if ticket is already in task status
+    const isAlreadyInTaskStatus = taskStatusTickets.some(t => t.id === ticket.id);
+    
+    if (isAlreadyInTaskStatus) {
+      alert('This ticket is already added to Task Status!');
+      return;
+    }
+    
+    // Add to task status list
+    setTaskStatusTickets([...taskStatusTickets, ticket]);
   };
 
-  // Function to mark selected ticket as completed
-  const completeSelectedTicket = () => {
-    if (selectedTicket) {
+  // Function to mark a ticket as completed
+  const completeTicket = (ticketId) => {
+    // Find the ticket to complete
+    const ticketToComplete = taskStatusTickets.find(ticket => ticket.id === ticketId);
+    
+    if (ticketToComplete) {
       // Add to resolved tickets
-      setResolvedTickets([...resolvedTickets, selectedTicket]);
-      // Remove from tickets list
-      setTickets(tickets.filter(ticket => ticket.id !== selectedTicket.id));
-      // Clear selected ticket
-      setSelectedTicket(null);
+      setResolvedTickets([...resolvedTickets, ticketToComplete]);
+      // Remove from task status list
+      setTaskStatusTickets(taskStatusTickets.filter(ticket => ticket.id !== ticketId));
+      // Remove from main tickets list
+      setTickets(tickets.filter(ticket => ticket.id !== ticketId));
     }
   };
 
@@ -58,16 +70,16 @@ function App() {
       <Navbar />
       <main className='pt-[100px] md:pt-40 p-5 md:p-10 flex flex-col gap-8'>
         <Status 
-          selectedTicket={selectedTicket}
+          taskStatusTickets={taskStatusTickets}
           resolvedTickets={resolvedTickets}
         />
         <Dashboard 
           tickets={tickets} 
           loading={loading}
-          selectedTicket={selectedTicket}
+          taskStatusTickets={taskStatusTickets}
           resolvedTickets={resolvedTickets}
           onSelectTicket={selectTicket}
-          onCompleteTicket={completeSelectedTicket}
+          onCompleteTicket={completeTicket}
         />
       </main>
       <Footer />

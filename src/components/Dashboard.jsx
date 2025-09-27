@@ -1,6 +1,6 @@
 import DashCard from './DashCard';
 
-const Dashboard = ({ tickets, loading, selectedTicket, resolvedTickets, onSelectTicket, onCompleteTicket }) => {
+const Dashboard = ({ tickets, loading, taskStatusTickets, resolvedTickets, onSelectTicket, onCompleteTicket }) => {
   // Show loading message while data is being fetched
   if (loading) {
     return (
@@ -37,18 +37,22 @@ const Dashboard = ({ tickets, loading, selectedTicket, resolvedTickets, onSelect
         <div className="lg:w-[30%]">
           <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">Task Status</h2>
           
-          {/* Current Task */}
+          {/* Current Tasks */}
           <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 mb-6">
-            {selectedTicket ? (
-              <>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">{selectedTicket.title}</h3>
-                <button 
-                  onClick={onCompleteTicket}
-                  className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg"
-                >
-                  Complete
-                </button>
-              </>
+            {taskStatusTickets.length > 0 ? (
+              <div className="space-y-4">
+                {taskStatusTickets.map(ticket => (
+                  <div key={ticket.id} className="border-b border-gray-100 last:border-b-0 pb-4 last:pb-0">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{ticket.title}</h3>
+                    <button 
+                      onClick={() => onCompleteTicket(ticket.id)}
+                      className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg text-sm"
+                    >
+                      Complete
+                    </button>
+                  </div>
+                ))}
+              </div>
             ) : (
               <p className="text-gray-600">Select a ticket to add to Task Status</p>
             )}

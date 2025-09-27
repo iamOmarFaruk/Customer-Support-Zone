@@ -1,9 +1,9 @@
 import React from 'react';
 import StatusCard from './StatusCard';
 
-const Status = ({ selectedTicket, resolvedTickets = [] }) => {
-  // Count in-progress tickets (1 if there's a selected ticket, 0 if not)
-  const inProgressCount = selectedTicket ? 1 : 0;
+const Status = ({ taskStatusTickets = [], resolvedTickets = [] }) => {
+  // Count in-progress tickets (number of tickets in task status)
+  const inProgressCount = taskStatusTickets.length;
   
   // Count resolved tickets
   const resolvedCount = resolvedTickets.length;
